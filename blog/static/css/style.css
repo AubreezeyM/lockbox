@@ -7,6 +7,10 @@
 --jade: hsla(150, 65%, 40%, 1);
 --raisin-black: hsla(330, 3%, 12%, 1); */
 
+/* CSS counter */
+:root {
+    counter-reset: posts;
+}
 
 body {
     background-color: hsla(330, 3%, 12%, 1);
@@ -54,11 +58,22 @@ body {
 }
 
 .list-group-item {
+    counter-increment: posts;
     position: relative;
     background-color: hsla(330, 3%, 12%, 1);
     border-bottom: 1px solid hsla(150, 65%, 40%, 1);
     color: hsla(0, 12%, 87%, 1);
     transition: all 0.3s ease;
+}
+
+.list-group-item::before {
+    content: counter(posts);
+    padding: 0.2rem;
+    background-color: hsla(284, 100%, 32%, 1);
+    color: hsla(0, 12%, 87%, 1);
+    width: 20px;
+    margin-right: 20px;
+    text-align: center;
 }
 
 .list-group-item::after {
@@ -69,7 +84,7 @@ body {
     width: 0;
     height: 2px;
     background: hsla(284, 100%, 32%, 1);
-    transition: width 0.3s ease;
+    transition: width 0.5s ease;
 }
 
 .list-group-item:hover {
@@ -82,7 +97,7 @@ body {
 }
 
 
-/* DEBUG */
+/* DEBUG 
 .container {
     border: 3px solid red;
 }
