@@ -1,8 +1,10 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1 class="post-titlebar">{{ post.title }}</h1>
-<p>{{ post.post_time }} </p>
-<hr>
-<p>{{ post.content|safe }}</p>
+<div class="container px-4">
+    <h1 class="post-titlebar">{{ post.title }}</h1>
+    <p>{{ post.post_time }} </p>
+    <hr>
+    <p>{{ post.content|safe }}</p>
+</div>
 {% endblock %}

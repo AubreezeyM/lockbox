@@ -15,13 +15,33 @@ body {
 
 /* Bootstrap5 overrides */
 .navbar {
-    background-color: hsla(284, 100%, 32%, 1);
-    border-bottom: 1px;
-    border-color: white;
+    background: linear-gradient(to right,
+            #2d003d,
+            #4b0066,
+            #7700a2);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    background-size: 200% auto;
+    animation: gradientShift 30s ease infinite;
+    margin-bottom: 0.3rem;
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% center;
+    }
+
+    50% {
+        background-position: 100% center;
+    }
+
+    100% {
+        background-position: 0% center;
+    }
 }
 
 .navbar-brand {
     color: hsla(0, 12%, 87%, 1);
+    padding-left: 2rem;
 }
 
 .nav-link {
@@ -30,18 +50,43 @@ body {
 
 .list-group {
     background-color: hsla(330, 3%, 12%, 1);
+    border-bottom: 1px solid hsla(150, 65%, 40%, 1);
 }
 
 .list-group-item {
-    background-color: hsla(150, 65%, 40%, 1);
-    padding-bottom: 10px;
-    border-color: black;
-}
-
-.list-group-item>a {
+    position: relative;
+    background-color: hsla(330, 3%, 12%, 1);
+    border-bottom: 1px solid hsla(150, 65%, 40%, 1);
     color: hsla(0, 12%, 87%, 1);
+    transition: all 0.3s ease;
 }
 
-.list-group-item>small {
-    justify-self: right;
+.list-group-item::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: hsla(284, 100%, 32%, 1);
+    transition: width 0.3s ease;
 }
+
+.list-group-item:hover {
+    background-color: hsla(330, 3%, 12%, 1);
+    color: hsla(246, 73%, 81%, 1);
+}
+
+.list-group-item:hover::after {
+    width: 100%;
+}
+
+
+/* DEBUG */
+.container {
+    border: 3px solid red;
+}
+
+/* .container-fluid {
+    border: 3px solid yellow;
+} */
