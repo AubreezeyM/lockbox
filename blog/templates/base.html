@@ -1,19 +1,54 @@
 <!DOCTYPE html>
-{% load django_bootstrap5 %}
 <html>
 
 <head>
     <title>Bri's Lockbox</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    {% bootstrap_css %}
-    {% bootstrap_javascript %}
 
-    <nav class="navbar navbar-dark, bg-dark">
-        <a class="navbar-brand" href="#">Bri's Lockbox</a>
-        <a href="blog/">Blog</a>
+    <nav class="navbar">
+        <div class="navbar-text">
+            <p>Bri's Lockbox</p>
+        </div>
+        <ul class="navbar-links">
+            <li class="navbar-link" id="blog-link"><a href="blog/">Blog</a></li>
+            <li class="navbar-link" id="posts-list-link"><a href="posts/">Posts</a></li>
+        </ul>
     </nav>
 
+    <style>
+        body {
+            background-color: rgb(21, 20, 20);
+            color: white;
+        }
+
+        .navbar {
+            width: 100%;
+            height: 60px;
+            background-color: rgb(11, 10, 10);
+            border-bottom: 1px solid rgb(62, 6, 95);
+        }
+
+        .navbar-links li {
+            list-style: none;
+            display: inline;
+        }
+
+        .navbar-links li a {
+            color: rgb(112, 11, 151);
+            text-decoration: none;
+            padding-left: 20px;
+            padding-right: 20px;
+            border-left: 1px solid rgb(142, 5, 194);
+        }
+
+        .navbar-text p {
+            color: rgb(142, 5, 194);
+            border-right: 1px solid rgb(112, 11, 151);
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+    </style>
 </head>
 
 <body>
