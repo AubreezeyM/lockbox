@@ -6,7 +6,10 @@ import datetime
 # Create your models here.
 class Post(models.Model):
     id = models.BigAutoField(primary_key=True, editable=False)
-    title = models.CharField(max_length=100)
-    content = models.TextField(max_length=100000)
+    title = models.CharField(max_length=200)
+    content = models.TextField()
     post_time = models.DateTimeField(auto_now=True)
     modified_time = models.DateTimeField(default=timezone.now())
+
+    def __str__(self):
+        return self.title
