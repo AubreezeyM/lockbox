@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+{% load django_bootstrap5 %}
+<html>
+
+<head>
+    <title>Bri's Lockbox</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+
+    <nav class="navbar navbar-dark, bg-dark">
+        <a class="navbar-brand" href="#">Bri's Lockbox</a>
+        <a href="blog/">Blog</a>
+    </nav>
+
+</head>
+
+<body>
+    {% block content %}
+    <p>Hello world! This is the base html template.</p>
+    {% endblock %}
+</body>
+
+</html>
