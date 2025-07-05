@@ -1,0 +1,47 @@
+/* color pallete, generated from coolors.co
+   a great name, honestly.
+
+--grape: hsla(284, 100%, 32%, 1);
+--periwinkle: hsla(246, 73%, 81%, 1);
+--timberwolf: hsla(0, 12%, 87%, 1);
+--jade: hsla(150, 65%, 40%, 1);
+--raisin-black: hsla(330, 3%, 12%, 1); */
+
+
+body {
+    background-color: hsla(330, 3%, 12%, 1);
+    color: hsla(0, 12%, 87%, 1);
+}
+
+/* Bootstrap5 overrides */
+.navbar {
+    background-color: hsla(284, 100%, 32%, 1);
+    border-bottom: 1px;
+    border-color: white;
+}
+
+.navbar-brand {
+    color: hsla(0, 12%, 87%, 1);
+}
+
+.nav-link {
+    color: hsla(0, 12%, 87%, 1);
+}
+
+.list-group {
+    background-color: hsla(330, 3%, 12%, 1);
+}
+
+.list-group-item {
+    background-color: hsla(150, 65%, 40%, 1);
+    padding-bottom: 10px;
+    border-color: black;
+}
+
+.list-group-item>a {
+    color: hsla(0, 12%, 87%, 1);
+}
+
+.list-group-item>small {
+    justify-self: right;
+}

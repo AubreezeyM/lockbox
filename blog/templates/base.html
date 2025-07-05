@@ -1,59 +1,47 @@
 <!DOCTYPE html>
 <html>
+{% load static %}
 
 <head>
-    <title>Bri's Lockbox</title>
+    <title>{% block title %}Bri's Lockbox{% endblock %}</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <nav class="navbar">
-        <div class="navbar-text">
-            <p>Bri's Lockbox</p>
-        </div>
-        <ul class="navbar-links">
-            <li class="navbar-link" id="blog-link"><a href="blog/">Blog</a></li>
-            <li class="navbar-link" id="posts-list-link"><a href="posts/">Posts</a></li>
-        </ul>
-    </nav>
+    {% load django_bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
 
-    <style>
-        body {
-            background-color: rgb(21, 20, 20);
-            color: white;
-        }
-
-        .navbar {
-            width: 100%;
-            height: 60px;
-            background-color: rgb(11, 10, 10);
-            border-bottom: 1px solid rgb(62, 6, 95);
-        }
-
-        .navbar-links li {
-            list-style: none;
-            display: inline;
-        }
-
-        .navbar-links li a {
-            color: rgb(112, 11, 151);
-            text-decoration: none;
-            padding-left: 20px;
-            padding-right: 20px;
-            border-left: 1px solid rgb(142, 5, 194);
-        }
-
-        .navbar-text p {
-            color: rgb(142, 5, 194);
-            border-right: 1px solid rgb(112, 11, 151);
-            padding-left: 20px;
-            padding-right: 20px;
-        }
-    </style>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 
 <body>
+    {% block navbar %}
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="#">Bri's Lockbox</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarLinks"
+            aria-controls="navbarLinks" aria-expanded="false" aria-label="Toggle Navbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse" id="navbarLinks">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Posts</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    {% endblock %}
+
     {% block content %}
     <p>Hello world! This is the base html template.</p>
+    <br /><br />
+    <p>If you're seeing this, chances are something's borked. Let me know, lol.</p>
+
     {% endblock %}
 </body>
 
