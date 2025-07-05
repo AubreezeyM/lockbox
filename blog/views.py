@@ -5,13 +5,17 @@ from .models import Post
 
 import markdown
     
+class HomepageView(View):
+    
+    def get(self, request, *args, **kwargs):
+        return render(request, 'homepage.html')
+
 class BlogPostList(ListView):
     model = Post
     template_name='post_list.html'
     
     def get_queryset(self):
         return super().get_queryset().order_by('-id')
-
 
 class MarkdownView(DetailView):
     model = Post
