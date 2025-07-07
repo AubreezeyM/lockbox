@@ -3,7 +3,8 @@
 {% block content %}
 <div class="container px-4">
     <h1 class="post-titlebar">{{ post.title }}</h1>
-    <p>{{ post.post_time }} </p>
+    <span class="post-details">posted date: {{ post.post_time }} </span>
+    <span class="post-details">category: {{ post.category }}</span>
     <hr>
     <p>{{ post.content|safe }}</p>
 </div>
