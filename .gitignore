@@ -8,6 +8,7 @@
 __pycache__
 db.sqlite3
 media
+migrations/
 
 # Python # 
 *.py[cod] 
@@ -85,3 +86,7 @@ GitHub.sublime-settings
 !.vscode/launch.json 
 !.vscode/extensions.json 
 .history
+
+# Project specific
+todo.md
+blog/static/posts/

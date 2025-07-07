@@ -1,16 +1,31 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 from django.views import View
+from django.views.generic import DetailView, ListView
 from .models import Post
 
-class BlogPostView(View):
-
-    def get(self, request):
-        return render(request, 'base.html')
+import markdown
     
-class BlogPostList(View):
-    posts_qs = Post.objects.all().order_by('-id')
-    all_posts = {'posts': posts_qs}
+class HomepageView(View):
+    
+    def get(self, request, *args, **kwargs):
+        return render(request, 'homepage.html')
 
-    def get(self, request):
-        return render(request, 'homepage.html', self.all_posts)
+class BlogPostList(ListView):
+    model = Post
+    template_name='post_list.html'
+    
+    def get_queryset(self):
+        return super().get_queryset().order_by('-id')
+
+class MarkdownView(DetailView):
+    model = Post
+    
+    def get(self, request, *args, **kwargs):
+        md = markdown.Markdown(extensions=['fenced_code'])
+
+        # quick conversion to markdown for the view
+        this_post = Post.objects.get(pk=kwargs['pk'])
+        this_post.content = md.convert(this_post.content)
+
+        return render(request, 'markdown_view.html', {'post': this_post})
+

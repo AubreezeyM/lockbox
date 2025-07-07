@@ -1,24 +1,48 @@
 <!DOCTYPE html>
-{% load django_bootstrap5 %}
 <html>
+{% load static %}
 
 <head>
-    <title>Bri's Lockbox</title>
+    <title>{% block title %}Bri's Lockbox{% endblock %}</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    {% load django_bootstrap5 %}
     {% bootstrap_css %}
     {% bootstrap_javascript %}
 
-    <nav class="navbar navbar-dark, bg-dark">
-        <a class="navbar-brand" href="#">Bri's Lockbox</a>
-        <a href="blog/">Blog</a>
-    </nav>
-
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 
 <body>
+    {% block navbar %}
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="#">Bri's Lockbox</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarLinks"
+            aria-controls="navbarLinks" aria-expanded="false" aria-label="Toggle Navbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse" id="navbarLinks">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="posts/">Posts</a>
+                    </li>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    {% endblock %}
+
     {% block content %}
     <p>Hello world! This is the base html template.</p>
+    <br /><br />
+    <p>If you're seeing this, chances are something's borked. Let me know, lol.</p>
+
     {% endblock %}
 </body>
 
