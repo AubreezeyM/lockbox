@@ -1,10 +1,12 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="container px-4">
-    <h1 class="post-titlebar">{{ post.title }}</h1>
-    <span class="post-details">posted date: {{ post.post_time }} </span>
-    <span class="post-details">category: {{ post.category }}</span>
+<div class="container">
+    <div class="post-titlebar">
+        <h1>{{ post.title }}</h1>
+        <span class="post-details" id="post-time">posted date: {{ post.post_time }} </span>
+        <span class="post-details" id="post-category">category: {{ post.category }}</span>
+    </div>
     <hr>
     <p>{{ post.content|safe }}</p>
 </div>
