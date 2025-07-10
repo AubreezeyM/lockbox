@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+
+<head>
+    <title>{% block title %}Bri's Lockbox{% endblock %}</title>
+</head>
+
+<body>
+    {% block navbar %}
+    {% endblock %}
+
+    {% block content %}
+    <p>Hello world! This is the base html template.</p>
+    <br /><br />
+    <p>If you're seeing this, chances are something's borked. Let me know, lol.</p>
+
+    {% endblock %}
+</body>
+
+</html>

@@ -8,11 +8,11 @@ import markdown
 class HomepageView(View):
     
     def get(self, request, *args, **kwargs):
-        return render(request, 'homepage.html')
+        return render(request, 'blog/homepage.html')
 
 class BlogPostList(ListView):
     model = Post
-    template_name='post_list.html'
+    template_name='blog/post_list.html'
     
     def get_queryset(self):
         return super().get_queryset().order_by('-id')
@@ -24,8 +24,8 @@ class MarkdownView(DetailView):
         md = markdown.Markdown(extensions=['fenced_code'])
 
         # quick conversion to markdown for the view
-        this_post = Post.objects.get(pk=kwargs['pk'])
+        this_post = self.model.objects.get(pk=kwargs['pk'])
         this_post.content = md.convert(this_post.content)
 
-        return render(request, 'markdown_view.html', {'post': this_post})
+        return render(request, 'blog/markdown_view.html', {'post': this_post})
 
