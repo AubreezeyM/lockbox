@@ -1,15 +1,15 @@
 const path = require('path');
 
 module.exports = {
-    entry: './react/index.js',
+    entry: './react/index.tsx',
     output: {
-        filename: 'react/index-bundle.js',
+        filename: 'react/markdown.js',
         path: path.resolve(__dirname, './static'),
     },
     module: {
         rules: [
             {
-                test: /\.(js|jsx)$/,
+                test: /\.(js|jsx|ts|tsx)$/,
                 exclude: /node_modules/,
                 use: {
                     loader: 'babel-loader',
@@ -18,6 +18,6 @@ module.exports = {
         ]
     },
     resolve: {
-        extensions: ['.js', '.jsx']
+        extensions: ['.js', '.jsx', '.ts', '.tsx']
     }
 };

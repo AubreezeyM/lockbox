@@ -3,6 +3,9 @@ from django.views import View
 from django.views.generic import DetailView, ListView
 from .models import Post
 
+from rest_framework import viewsets
+from .serializers import PostSerializer
+
 import markdown
     
 class HomepageView(View):
@@ -17,15 +20,13 @@ class BlogPostList(ListView):
     def get_queryset(self):
         return super().get_queryset().order_by('-id')
 
-class MarkdownView(DetailView):
+class PostView(DetailView):
     model = Post
+    context_object_name = 'post'
+
+class PostViewSet(viewsets.ModelViewSet):
+    serializer_class = PostSerializer
+    queryset = Post.objects.all()
     
-    def get(self, request, *args, **kwargs):
-        md = markdown.Markdown(extensions=['fenced_code'])
-
-        # quick conversion to markdown for the view
-        this_post = self.model.objects.get(pk=kwargs['pk'])
-        this_post.content = md.convert(this_post.content)
-
-        return render(request, 'blog/markdown_view.html', {'post': this_post})
-
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)

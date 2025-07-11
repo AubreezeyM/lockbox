@@ -20,15 +20,20 @@
   },
   "homepage": "https://github.com/AubreezeyM/lockbox#readme",
   "dependencies": {
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
     "lodash": "^4.17.21",
     "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react-dom": "^19.1.0",
+    "react-markdown": "^10.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.28.0",
     "@babel/preset-env": "^7.28.0",
     "@babel/preset-react": "^7.27.1",
+    "@babel/preset-typescript": "^7.27.1",
     "babel-loader": "^10.0.0",
+    "typescript": "^5.8.3",
     "webpack": "^5.100.0",
     "webpack-cli": "^6.0.1"
   }
