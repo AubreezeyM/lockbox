@@ -1,9 +1,19 @@
 const path = require('path');
 
 module.exports = {
-    entry: './react/index.tsx',
+    entry: {
+        markdown: {
+            import: './blog/react/index.tsx',
+            dependOn: 'react',
+        },
+        about_me: {
+            import: './blog/react/index.tsx',
+            dependOn: 'react',
+        },
+        react: ['react', 'react-dom'],
+    },
     output: {
-        filename: 'react/markdown.js',
+        filename: 'react/[name]-bundle.js',
         path: path.resolve(__dirname, './static'),
     },
     module: {
@@ -19,5 +29,5 @@ module.exports = {
     },
     resolve: {
         extensions: ['.js', '.jsx', '.ts', '.tsx']
-    }
+    },
 };
