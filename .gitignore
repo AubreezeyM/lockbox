@@ -5,7 +5,8 @@ todo.md
 
 # Python/Django
 .env/
-static/
+static/images
+static/react
 *.log
 *.pot
 *.pyc

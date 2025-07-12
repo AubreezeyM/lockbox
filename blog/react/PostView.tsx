@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ReactMarkdown from 'react-markdown';
+import { createRoot } from "react-dom/client";
 
 interface Post {
     id: number;
@@ -14,12 +15,10 @@ export const PostView = () => {
     const [error, setError] = useState<string | null>(null);
 
     const url = window.location.href;
-    const post_id = url.substring(url.length - 2); // -2 just to catpture id + forward slash for Django
+    const post_id = parseInt(url.substring(url.length - 2)); // -2 just to catpture id + forward slash for Django
 
-
-    // request post from django backend
-    useEffect(() => {
-        fetch(`http://127.0.0.1:8000/api/posts/${post_id}`)
+    function getPost(id: number) {
+        fetch(`http://127.0.0.1:8000/api/posts/${id}`)
             .then((response) => {
                 if (!response.ok) {
                     throw new Error('We borked!');
@@ -34,20 +33,33 @@ export const PostView = () => {
                 setError(error.message);
                 setLoading(false);
             });
-    }, []);
+    }
+
+
+    useEffect(() => {
+        getPost(post_id);
+    }, [post_id])
 
     if (loading) return <div>Loading...</div>
     if (error) return <div>We borked! {error}</div>
 
     return (
-        <div>
+        <div className="post-wrapper">
             {post && (
                 <div key={post.id}>
-                    <h2>{post.title}</h2>
-                    <ReactMarkdown>{post.content}</ReactMarkdown>
+                    <div className="post-titlebar">
+                        <h2 id="post-title-text">{post.title}</h2>
+                    </div>
+                    <div className="post-content">
+                        <ReactMarkdown>{post.content}</ReactMarkdown>
+                    </div>
                 </div>
             )
             }
         </div>
     )
 }
+
+createRoot(document.getElementById('post-container')).render(
+    <PostView />
+)

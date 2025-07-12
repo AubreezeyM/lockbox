@@ -3,11 +3,7 @@ const path = require('path');
 module.exports = {
     entry: {
         markdown: {
-            import: './blog/react/index.tsx',
-            dependOn: 'react',
-        },
-        about_me: {
-            import: './blog/react/index.tsx',
+            import: './blog/react/PostView.tsx',
             dependOn: 'react',
         },
         react: ['react', 'react-dom'],
