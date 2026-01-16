@@ -1,0 +1,13 @@
+:root {
+    /* Color theme, sourced from coolors.co (fantastic name) */
+    --shadow-grey: #1e1e24ff;
+    --dusty-lavender: #827191ff;
+    --moss-green: #82d173ff;
+    --icy-blue: #badefcff;
+    --lavender: #eae8ffff;
+}
+
+body {
+    background-color: var(--shadow-grey);
+    color: var(--lavender);
+}
